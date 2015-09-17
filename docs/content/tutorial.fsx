@@ -10,8 +10,8 @@ Introducing your project
 Say more
 
 *)
-#r "FSharp.ProjectScaffold.dll"
-open FSharp.ProjectScaffold
+#r "fsharp-angular.dll"
+open fsharp-angular
 
 Library.hello 0
 (**

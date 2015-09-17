@@ -1,4 +1,4 @@
-﻿namespace FSharp.ProjectTemplate
+namespace fsharp_angular
 
 /// Documentation for my library
 ///
