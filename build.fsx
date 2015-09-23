@@ -307,8 +307,8 @@ Target "CanopyTests" (fun _ ->
     let port = 5523
     let appPool = "Clr4IntegratedAppPool"
 
-    let random : uint16 = uint16 DateTime.Now.Ticks
-    let config = createConfigFile(project + "-" + random.ToString(), int random, ".vs/config/applicationhost.config", websiteDir, hostName, port, appPool)
+    let random : uint16 = uint16 2
+    let config = ".vs/config/applicationhost.config"
     let webSiteProcess = HostWebsite id config (int random) appPool
 
     let result =
