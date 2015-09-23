@@ -39,6 +39,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "fsharp-angular-web", "src\f
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "fsharp-angular.UITests", "tests\fsharp-angular.UITests\fsharp-angular.UITests.fsproj", "{EF2E8733-6FEA-4831-80C3-7EB85A99E45D}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "fsharp-angular-client", "src\fsharp-angular-client\fsharp-angular-client.fsproj", "{DB3EA9CC-BDEB-4D5F-97DF-79A3A180B3C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{EF2E8733-6FEA-4831-80C3-7EB85A99E45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF2E8733-6FEA-4831-80C3-7EB85A99E45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF2E8733-6FEA-4831-80C3-7EB85A99E45D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB3EA9CC-BDEB-4D5F-97DF-79A3A180B3C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB3EA9CC-BDEB-4D5F-97DF-79A3A180B3C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB3EA9CC-BDEB-4D5F-97DF-79A3A180B3C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB3EA9CC-BDEB-4D5F-97DF-79A3A180B3C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

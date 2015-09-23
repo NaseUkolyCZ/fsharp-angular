@@ -195,3 +195,5 @@ wwwroot
 FSharp.Formatting.svclog
 iisexpress-template.config
 bower_components
+page.js
+lib/
