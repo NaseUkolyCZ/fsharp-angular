@@ -3,15 +3,12 @@
 // --------------------------------------------------------------------------------------
 
 #r @"packages/FAKE/tools/FakeLib.dll"
-#r @"packages/FAKE/tools/Fake.IIS.dll"
 
 open Fake
 open Fake.Git
 open Fake.AssemblyInfoFile
 open Fake.ReleaseNotesHelper
 open Fake.UserInputHelper
-open Fake.IISHelper
-open Fake.IISExpress
 open System
 open System.IO
 #if MONO
@@ -300,26 +297,6 @@ Target "ReleaseDocs" (fun _ ->
     StageAll tempDocsDir
     Git.Commit.Commit tempDocsDir (sprintf "Update generated documentation for version %s" release.NugetVersion)
     Branches.push tempDocsDir
-)
-
-Target "CanopyTests" (fun _ ->
-    let hostName = "localhost"
-    let port = 5523
-    let appPool = "Clr4IntegratedAppPool"
-
-    let random : uint16 = uint16 2
-    let config = ".vs/config/applicationhost.config"
-    let webSiteProcess = HostWebsite id config (int random) appPool
-
-    let result =
-        ExecProcess (fun info ->
-            info.FileName <- (buildDir @@ "fsharp_angular.UITests.exe")
-            info.WorkingDirectory <- buildDir
-        ) (System.TimeSpan.FromMinutes 5.)
-
-    ProcessHelper.killProcessById webSiteProcess.Id 
-
-    if result <> 0 then failwith "Failed result from canopy tests"
 )
 
 #load "paket-files/fsharp/FAKE/modules/Octokit/Octokit.fsx"
