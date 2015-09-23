@@ -305,10 +305,11 @@ Target "ReleaseDocs" (fun _ ->
 Target "CanopyTests" (fun _ ->
     let hostName = "localhost"
     let port = 5523
+    let appPool = "Clr4IntegratedAppPool"
 
     let random : uint16 = uint16 DateTime.Now.Ticks
-    let config = createConfigFile(project + "-" + random.ToString(), int random, "iisexpress-template.config", websiteDir, hostName, port)
-    let webSiteProcess = HostWebsite id config (int random)
+    let config = createConfigFile(project + "-" + random.ToString(), int random, ".vs/config/applicationhost.config", websiteDir, hostName, port, appPool)
+    let webSiteProcess = HostWebsite id config (int random) appPool
 
     let result =
         ExecProcess (fun info ->
@@ -316,7 +317,7 @@ Target "CanopyTests" (fun _ ->
             info.WorkingDirectory <- buildDir
         ) (System.TimeSpan.FromMinutes 5.)
 
-    ProcessHelper.killProcessById webSiteProcess.Id
+    ProcessHelper.killProcessById webSiteProcess.Id 
 
     if result <> 0 then failwith "Failed result from canopy tests"
 )
