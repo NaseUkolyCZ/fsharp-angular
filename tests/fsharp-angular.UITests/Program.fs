@@ -33,7 +33,4 @@ start firefox
 //run all tests
 run()
 
-printfn "press [enter] to exit"
-System.Console.ReadLine() |> ignore
-
 quit()
