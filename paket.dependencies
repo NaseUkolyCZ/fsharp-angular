@@ -5,6 +5,7 @@ nuget FSharp.Formatting
 nuget NUnit 
 nuget NUnit.Runners
 nuget FAKE
+nuget PhantomJS
 nuget SourceLink.Fake
 
 github fsharp/FAKE modules/Octokit/Octokit.fsx

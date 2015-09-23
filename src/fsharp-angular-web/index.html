@@ -7,8 +7,8 @@
     <script src="app.js"></script>
 </head>
 <body ng-controller="food as vm">
-    <input type="text" ng-model="vm.title" placeholder="Enter food" />
+    <input type="text" ng-model="vm.title" placeholder="Enter food" id="food" />
 
-    <p>Sriracha sauce is great with {{vm.title}}!</p>
+    <p id="sentence">Sriracha sauce is great with {{vm.title}}!</p>
 </body>
 </html>

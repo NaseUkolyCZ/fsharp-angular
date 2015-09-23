@@ -25,6 +25,7 @@ NUGET
     NUnit.Runners (2.6.4)
     Octokit (0.15.0)
       Microsoft.Net.Http
+    PhantomJS (2.0.0)
     Selenium.Support (2.47.0)
       Selenium.WebDriver (>= 2.47.0)
     Selenium.WebDriver (2.47.0)
