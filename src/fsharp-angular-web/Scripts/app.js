@@ -1,8 +1,15 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('fsharp-angular-web-app', [
-      'ui.router',                    // Routing
-      'ui.bootstrap'                  // Bootstrap,
+    angular.module('app', [
+        // Angular modules 
+        //'ngRoute'
+
+        // Custom modules 
+        //'ui.router',                    // Routing
+        //'ui.bootstrap'                  // Bootstrap,
+
+        // 3rd Party Modules
+
     ]);
 })();

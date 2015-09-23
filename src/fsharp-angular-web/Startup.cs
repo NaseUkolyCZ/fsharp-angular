@@ -17,10 +17,6 @@ namespace fsharp_angular_web
 
         public void Configure(IApplicationBuilder app)
         {
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
         }
     }
 }

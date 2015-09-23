@@ -2,6 +2,7 @@
     // load Grunt plugins from NPM
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     // configure plugins
     grunt.initConfig({
@@ -9,6 +10,13 @@
             my_target: {
                 files: { 'wwwroot/app.js': ['Scripts/app.js', 'Scripts/**/*.js'] }
             }
+        },
+
+        copy: {
+            main: {
+                src: 'index.html',
+                dest: 'wwwroot/index.html',
+            },
         },
 
         watch: {
@@ -20,5 +28,5 @@
     });
 
     // define tasks
-    grunt.registerTask('default', ['uglify', 'watch']);
+    grunt.registerTask('default', ['uglify', 'copy', 'watch']);
 };
