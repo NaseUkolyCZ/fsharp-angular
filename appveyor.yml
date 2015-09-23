@@ -15,7 +15,7 @@ before_build:
  - ps: dnvm list
  - ps: dnvm use 1.0.0-beta7
  - ps: npm cache clean
- - ps: npm install -g gulp bower
+ - ps: npm install -g gulp bower grunt-cli
  - ps: dnu restore
 # Use NuGet 2.*
  - ps: (New-Object Net.WebClient).DownloadFile('https://www.nuget.org/nuget.exe', 'C:\Tools\NuGet\NuGet.exe')
