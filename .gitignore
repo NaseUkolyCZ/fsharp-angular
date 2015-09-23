@@ -194,3 +194,4 @@ node_modules
 wwwroot
 FSharp.Formatting.svclog
 iisexpress-template.config
+bower_components
