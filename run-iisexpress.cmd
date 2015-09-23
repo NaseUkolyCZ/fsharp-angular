@@ -1,1 +1,0 @@
-"C:\Program Files (x86)\IIS Express\iisexpress.exe" /config:"C:\Users\david.podhola\Source\Workspaces\fsharp-angular\.vs\config\applicationhost.config" /site:"fsharp-angular-web" /apppool:"Clr4IntegratedAppPool"
