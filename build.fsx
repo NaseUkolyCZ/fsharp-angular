@@ -186,12 +186,6 @@ Target "PublishNuget" (fun _ ->
 
 // --------------------------------------------------------------------------------------
 // Generate the documentation
-
-Target "GenerateReferenceDocs" (fun _ ->
-    if not <| executeFSIWithArgs "docs/tools" "generate.fsx" ["--define:RELEASE"; "--define:REFERENCE"] [] then
-      failwith "generating reference documentation failed"
-)
-
 let generateHelp' fail debug =
     let args =
         if debug then ["--define:HELP"]
@@ -344,7 +338,6 @@ Target "All" DoNothing
   ==> "Build"
   ==> "CopyBinaries"
   ==> "RunTests"
-  ==> "GenerateReferenceDocs"
   ==> "GenerateDocs"
   ==> "All"
   =?> ("ReleaseDocs",isLocalBuild)
@@ -359,7 +352,6 @@ Target "All" DoNothing
 
 "CleanDocs"
   ==> "GenerateHelp"
-  ==> "GenerateReferenceDocs"
   ==> "GenerateDocs"
 
 "CleanDocs"
