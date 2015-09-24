@@ -5,7 +5,6 @@ nuget FSharp.Formatting
 nuget FunScript
 nuget FunScript.TypeScript.Binding.jquery
 nuget FunScript.TypeScript.Binding.lib
-nuget FunScript.TypeScript.Binding.logg
 nuget NUnit 
 nuget NUnit.Runners
 nuget FAKE
