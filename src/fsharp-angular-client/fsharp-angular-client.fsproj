@@ -73,7 +73,7 @@
   </Target>
   -->
   <Target Name="AfterBuild">
-    <Exec Command="bin\Debug\fsharp_angular_client.exe > ..\fsharp-angular-web\Scripts\page.js"/>
+    <Exec Command="bin\$(Configuration)\fsharp_angular_client.exe > ..\fsharp-angular-web\Scripts\page.js"/>
   </Target>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6')">
