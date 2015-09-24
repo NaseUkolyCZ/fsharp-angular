@@ -18,6 +18,8 @@ NUGET
     FunScript.TypeScript.Binding.jquery (1.1.0.37)
       FunScript.TypeScript.Binding.lib (>= 1.1.0.37)
     FunScript.TypeScript.Binding.lib (1.1.0.37)
+    FunScript.TypeScript.Binding.logg (1.1.0.37)
+      FunScript.TypeScript.Binding.lib (>= 1.1.0.37)
     Microsoft.Bcl (1.1.10)
       Microsoft.Bcl.Build (>= 1.0.14)
     Microsoft.Bcl.Build (1.0.21)

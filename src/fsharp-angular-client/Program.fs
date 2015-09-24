@@ -83,7 +83,7 @@ important - the important fact is that we can now easily access DOM elements:
 *)
 
 let main() = 
-  jq?helloWorld.click(fun _ -> hello() :> obj)
+    jq?helloWorld.click(fun _ -> hello() :> obj)
 
 (** 
 The `mainHello` function will be later called when the web page is loaded. It
