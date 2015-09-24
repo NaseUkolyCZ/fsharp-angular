@@ -83,6 +83,7 @@ important - the important fact is that we can now easily access DOM elements:
 *)
 
 let main() = 
+    logg.Globals.rootLogger.info.Invoke( [| "started" |] )
     jq?helloWorld.click(fun _ -> hello() :> obj)
 
 (** 
