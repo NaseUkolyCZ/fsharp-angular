@@ -2,6 +2,9 @@ source https://nuget.org/api/v2
 
 nuget canopy
 nuget FSharp.Formatting
+nuget FunScript
+nuget FunScript.TypeScript.Binding.jquery
+nuget FunScript.TypeScript.Binding.lib
 nuget NUnit 
 nuget NUnit.Runners
 nuget FAKE
