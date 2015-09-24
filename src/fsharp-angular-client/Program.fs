@@ -76,6 +76,13 @@ following snippet gives the necessary definitions:
 let jq(selector : string) = Globals.Dollar.Invoke selector
 let (?) jq name = jq("#" + name)
 
+[<JS; JSEmit("log.info({0})")>]
+let log_info (a) = failwith "never" |> ignore
+
+[<JS; JSEmit("log.enableAll()")>]
+let log_enable (b) = failwith "never" |> ignore
+
+
 (**
 The `?` operator takes a parameter of type `j.JQueryStatic` which is a (generated)
 type that represents the type of `jQuery`. The details of the snippet are not
@@ -83,7 +90,13 @@ important - the important fact is that we can now easily access DOM elements:
 *)
 
 let main() = 
-    jq?helloWorld.click(fun _ -> hello() :> obj)
+    log_enable ()
+    log_info ( "application started" )
+    jq?helloWorld.click(
+        fun _ -> 
+            log_info ( "button clicked" )
+            hello() :> obj
+    )
 
 (** 
 The `mainHello` function will be later called when the web page is loaded. It
