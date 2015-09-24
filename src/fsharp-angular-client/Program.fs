@@ -83,8 +83,7 @@ important - the important fact is that we can now easily access DOM elements:
 *)
 
 let main() = 
-  //jq?helloWorld.click(fun _ -> hello() :> obj)
-  hello ()
+  jq?helloWorld.click(fun _ -> hello() :> obj)
 
 (** 
 The `mainHello` function will be later called when the web page is loaded. It
@@ -100,4 +99,4 @@ finds the function in the above section). To start the launcher, the `Page.fs`
 file ends with the following line:
 *)
 
-printfn "%s" <| FunScript.Compiler.compileWithoutReturn <@ main() @>
+printfn "$(document).ready(function () {\n%s\n});" <| FunScript.Compiler.compileWithoutReturn <@ main() @>
