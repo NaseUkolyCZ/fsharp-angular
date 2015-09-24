@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app', [
+    angular.module('todoApp', [
         // Angular modules 
         //'ngRoute'
 

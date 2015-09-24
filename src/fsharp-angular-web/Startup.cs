@@ -1,22 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using fsharp_angular_web.Model;
 using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Http;
+using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Mvc;
+using Microsoft.Data.Entity;
 using Microsoft.Framework.DependencyInjection;
+using Newtonsoft.Json.Serialization;
+using System.Linq;
 
 namespace fsharp_angular_web
 {
     public class Startup
     {
-        // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
+        public Startup(IHostingEnvironment env)
+        {
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
+            services
+                .AddMvc()
+                .AddJsonOptions(options =>
+                    options.SerializerSettings.ContractResolver =
+                        new CamelCasePropertyNamesContractResolver()
+                );
+
+            services
+                .AddEntityFramework()
+                .AddInMemoryDatabase()
+                .AddDbContext<TodoDbContext>(
+                    options => options.UseInMemoryDatabase()
+                );
         }
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UseDefaultFiles();
+            app.UseMvc();
+            app.UseStaticFiles();
         }
     }
 }
