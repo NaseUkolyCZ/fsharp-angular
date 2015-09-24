@@ -36,6 +36,9 @@ EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "fsharp-angular.Tests", "tests\fsharp-angular.Tests\fsharp-angular.Tests.fsproj", "{88CACE1E-9ADB-454E-ABBB-7896DAD424A9}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "fsharp-angular-web", "src\fsharp-angular-web\fsharp-angular-web.xproj", "{02E6243E-7BA5-491F-B3BF-BCFCB922961A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DB3EA9CC-BDEB-4D5F-97DF-79A3A180B3C6} = {DB3EA9CC-BDEB-4D5F-97DF-79A3A180B3C6}
+	EndProjectSection
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "fsharp-angular.UITests", "tests\fsharp-angular.UITests\fsharp-angular.UITests.fsproj", "{EF2E8733-6FEA-4831-80C3-7EB85A99E45D}"
 EndProject
