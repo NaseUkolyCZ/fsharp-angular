@@ -1,11 +1,19 @@
 ﻿<!DOCTYPE html>
-<html ng-app="todoApp">
+<html ng-app="app">
 <head>
     <meta charset="utf-8" />
     <title>Hello!</title>
     <script src="app.js"></script>
 </head>
 <body>
+    <!--div ng-controller="FoodController as vm">
+        <input type="text" ng-model="vm.title" placeholder="Enter food" id="food" />
+
+        <p id="sentence">Sriracha sauce is great with {{vm.title}}!</p>
+
+        <a id="helloWorld" class="btn btn-large btn-success">Say hello!</a>
+    </!--div -->
+
     <h2>Todo</h2>
     <div ng-controller="TodoListController as todoList">
         <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>

@@ -1,22 +1,22 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('todoApp', []).controller('TodoListController', [
-        '$scope', '$http', function ($scope, $http) {
+    angular.module('app', []).controller('TodoListController', [
+        '$scope', '$http', '$log', function ($scope, $http, $log) {
 
             var todoList = this;
 
             todoList.todos = [];
 
             todoList.addTodo = function () {
-                var todo = {
-                    title: todoList.todoText,
-                    completed: false
-                };
+                var todo = { title: todoList.todoText };
 
                 todoList.todoText = '';
 
+                $log.info('Posting todo item: ' + todo.title);
+
                 $http.post('api/todo', todo).then(function (data) {
+                    $log.info('Got todo item back: ' + data.data.title);
                     todoList.todos.push(data.data);
                 })
             };
@@ -37,7 +37,10 @@
                 });
             };
 
+            $log.info('Fetching todo items.');
+
             $http.get('api/todo').success(function (data) {
+                $log.info('Got ' + data.length + ' todo items.');
                 todoList.todos = data;
             });
         }

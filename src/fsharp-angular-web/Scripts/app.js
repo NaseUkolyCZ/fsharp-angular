@@ -1,15 +1,6 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('todoApp', [
-        // Angular modules 
-        //'ngRoute'
+    angular.module('app', []);
 
-        // Custom modules 
-        //'ui.router',                    // Routing
-        //'ui.bootstrap'                  // Bootstrap,
-
-        // 3rd Party Modules
-
-    ]);
 })();
