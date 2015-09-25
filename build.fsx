@@ -82,6 +82,7 @@ let (|Fsproj|Csproj|Vbproj|) (projFileName:string) =
     | f when f.EndsWith("vbproj") -> Vbproj
     | _                           -> failwith (sprintf "Project file %s not supported. Unknown project type." projFileName)
 
+// protect master branch by running build.cmd without errors
 Target "GenerateGitHook" (fun _ ->
     let targetFile = @".git\hooks\pre-push"
 
@@ -99,6 +100,11 @@ fi
 
 """
     System.IO.File.WriteAllText(targetFile, content)
+)
+
+// fix ApiaryProvider by replacing the released files from the paket.dependencies downloaded 
+Target "ApiaryProviderHotfix" (fun _ ->
+    CopyDir @".\packages\ApiaryProvider\lib\net40" @".\paket-files\NaseUkolyCZ\ApiaryProvider\dist" (fun _ -> true)
 )
 
 // Generate assembly info files with the right version & up-to-date information
@@ -383,6 +389,7 @@ Target "All" DoNothing
 
 "Clean"
   ==> "GenerateGitHook"
+  ==> "ApiaryProviderHotfix"
   ==> "AssemblyInfo"
   ==> "Build"
   ==> "CopyBinaries"

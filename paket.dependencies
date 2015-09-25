@@ -1,5 +1,6 @@
 source https://nuget.org/api/v2
 
+nuget ApiaryProvider
 nuget canopy
 nuget FSharp.Formatting
 nuget FunScript
@@ -12,3 +13,10 @@ nuget PhantomJS
 nuget SourceLink.Fake
 
 github fsharp/FAKE modules/Octokit/Octokit.fsx
+
+github NaseUkolyCZ/ApiaryProvider:new_ver dist/ApiaryProvider.DesignTime.dll
+github NaseUkolyCZ/ApiaryProvider:new_ver dist/ApiaryProvider.DesignTime.xml
+github NaseUkolyCZ/ApiaryProvider:new_ver dist/ApiaryProvider.dll
+github NaseUkolyCZ/ApiaryProvider:new_ver dist/ApiaryProvider.xml
+github NaseUkolyCZ/ApiaryProvider:new_ver dist/FSharp.Data.DesignTime.dll
+github NaseUkolyCZ/ApiaryProvider:new_ver dist/FSharp.Data.DesignTime.xml
