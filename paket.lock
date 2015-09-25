@@ -48,3 +48,11 @@ GITHUB
   specs:
     modules/Octokit/Octokit.fsx (448a0e59aa1381714d045bf81c3ab5692aad6259)
       Octokit
+  remote: NaseUkolyCZ/ApiaryProvider
+  specs:
+    dist/ApiaryProvider.DesignTime.dll (581d5339a3e7932377d676c8299c058033a2d50d)
+    dist/ApiaryProvider.DesignTime.xml (581d5339a3e7932377d676c8299c058033a2d50d)
+    dist/ApiaryProvider.dll (581d5339a3e7932377d676c8299c058033a2d50d)
+    dist/ApiaryProvider.xml (581d5339a3e7932377d676c8299c058033a2d50d)
+    dist/FSharp.Data.DesignTime.dll (581d5339a3e7932377d676c8299c058033a2d50d)
+    dist/FSharp.Data.DesignTime.xml (581d5339a3e7932377d676c8299c058033a2d50d)
