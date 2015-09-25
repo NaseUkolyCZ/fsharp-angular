@@ -6,6 +6,8 @@ build_script:
 
 version: 0.0.1.{build}
 
+test: off
+
 artifacts:
   - path: bin
     name: bin
