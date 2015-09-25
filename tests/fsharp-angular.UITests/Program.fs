@@ -5,7 +5,7 @@ open System
 canopy.configuration.phantomJSDir <- @"..\..\..\..\packages\PhantomJS\tools\phantomjs"
 
 let testUrl  = "http://localhost:5000/"
-let waitSecs = 3
+let waitSecs = 30
 start phantomJS
 
 "todo controller calculates remaining tasks" &&& fun _ ->
