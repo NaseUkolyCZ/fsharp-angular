@@ -1,4 +1,4 @@
-﻿/// <binding BeforeBuild='bower, default' />
+﻿/// <binding BeforeBuild='uglify:my_target, copy:main' ProjectOpened='bower:install' />
 module.exports = function (grunt) {
     // load Grunt plugins from NPM
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -18,10 +18,6 @@ module.exports = function (grunt) {
 
         uglify: {
             my_target: {
-                options: {
-                    mangle: false,
-                    beautify: true
-                },
                 files: {
                     'wwwroot/app.js': [
                         'lib/jquery/jquery.js',
@@ -29,6 +25,10 @@ module.exports = function (grunt) {
                         'Scripts/app.js',
                         'Scripts/**/*.js'
                     ]
+                },
+                options: {
+                    beautify: true,
+                    mangle: false
                 }
             }
         },
@@ -52,6 +52,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
         'bower',
         'uglify',
-        'copy'
+        'copy',
+        'watch'
     ]);
 };
