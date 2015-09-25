@@ -27,4 +27,4 @@ SET "VSLANG=1033"
 SET "VSLOGGER_UNIQUEID=9594e643e3764536964265985c1bca9c"
 SET "XTC_IDE=bed344409d854f1e8b7846625f41c407"
 
-"C:\Program Files (x86)\IIS Express\iisexpress.exe" /config:"C:\Users\david.podhola\Source\Workspaces\fsharp-angular\.vs\config\applicationhost.config" /site:"fsharp-angular-web" /apppool:"Clr4IntegratedAppPool"
+"C:\Program Files (x86)\IIS Express\iisexpress.exe" /config:".vs\config\applicationhost.config" /site:"fsharp-angular-web" /apppool:"Clr4IntegratedAppPool"
