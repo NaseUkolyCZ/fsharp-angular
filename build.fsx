@@ -11,6 +11,7 @@ open Fake.ReleaseNotesHelper
 open Fake.UserInputHelper
 open System
 open System.IO
+open System.Diagnostics
 #if MONO
 #else
 #load "packages/SourceLink.Fake/tools/Fake.fsx"
@@ -43,8 +44,8 @@ let description = "Project has no description; update build.fsx"
 let authors = [ "David Podhola" ]
 
 // Directories
-let buildDir = @".\tests\fsharp-angular.UITests\bin\Debug\"
-let websiteDir = @".\src\fsharp-angular-web\wwwroot\"
+let webRootDir = @".\src\fsharp-angular-web\"
+let UITestsDir = @".\tests\fsharp-angular.UITests\bin\Release"
 
 // Tags for your project (for NuGet package)
 let tags = ""
@@ -80,6 +81,25 @@ let (|Fsproj|Csproj|Vbproj|) (projFileName:string) =
     | f when f.EndsWith("csproj") -> Csproj
     | f when f.EndsWith("vbproj") -> Vbproj
     | _                           -> failwith (sprintf "Project file %s not supported. Unknown project type." projFileName)
+
+Target "GenerateGitHook" (fun _ ->
+    let targetFile = @".git\hooks\pre-push"
+
+    let content = """#!/bin/bash
+
+protected_branch='master'  
+current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+
+if [ $protected_branch = $current_branch ]  
+then  
+    ./build.cmd
+else  
+    exit 0 # push will execute
+fi  
+
+"""
+    System.IO.File.WriteAllText(targetFile, content)
+)
 
 // Generate assembly info files with the right version & up-to-date information
 Target "AssemblyInfo" (fun _ ->
@@ -147,6 +167,34 @@ Target "RunTests" (fun _ ->
             DisableShadowCopy = true
             TimeOut = TimeSpan.FromMinutes 20.
             OutputFile = "TestResults.xml" })
+)
+
+// --------------------------------------------------------------------------------------
+// Run the UI tests
+
+Target "CanopyTests" (fun _ ->
+    let hostName = "localhost"
+    let port = 5000
+
+    let info : ProcessStartInfo = ProcessStartInfo()
+    info.FileName <- Environment.ExpandEnvironmentVariables(@"%userprofile%\.dnx\runtimes\dnx-clr-win-x86.1.0.0-beta7\bin\dnx.exe")
+    info.WorkingDirectory <- webRootDir
+    info.Arguments <- "web"
+    info.UseShellExecute <- false
+
+    printfn "Starting %A in %A with %A arguments" info.FileName info.WorkingDirectory info.Arguments
+
+    let dnxProcess = Process.Start( info )
+
+    let result =
+        ExecProcess (fun info ->
+            info.FileName <- (UITestsDir @@ @"fsharp_angular.UITests.exe")
+            info.WorkingDirectory <- UITestsDir
+        ) (System.TimeSpan.FromMinutes 5.)
+
+    ProcessHelper.killProcessById dnxProcess.Id
+
+    if result <> 0 then failwith "Failed result from canopy tests"
 )
 
 #if MONO
@@ -334,10 +382,12 @@ Target "BuildPackage" DoNothing
 Target "All" DoNothing
 
 "Clean"
+  ==> "GenerateGitHook"
   ==> "AssemblyInfo"
   ==> "Build"
   ==> "CopyBinaries"
   ==> "RunTests"
+  ==> "CanopyTests"
   ==> "GenerateDocs"
   ==> "All"
   =?> ("ReleaseDocs",isLocalBuild)

@@ -1,3 +1,5 @@
+SET DNX_HOME=%USERPROFILE%\.dnx\
+
 SET "APP_POOL_ID=Clr4IntegratedAppPool"
 SET "ASPNET_ENV=Development"
 SET "COMPLUS_ForceENC=1"
@@ -18,5 +20,14 @@ SET "VSIDE=true"
 SET "VSLANG=1033"
 SET "VSLOGGER_UNIQUEID=9594e643e3764536964265985c1bca9c"
 SET "XTC_IDE=bed344409d854f1e8b7846625f41c407"
+
+REM copy the AspNet.Loader.dll to bin folder
+md wwwroot\bin
+
+SET ASPNETLOADER_PACKAGE_BASEPATH=%USERPROFILE%\\.dnx\\packages\Microsoft.AspNet.Loader.IIS.Interop
+REM figure out the path of AspNet.Loader.dll
+FOR /F %%j IN ('dir /b /o:D %ASPNETLOADER_PACKAGE_BASEPATH%\*') do (SET AspNetLoaderPath=%ASPNETLOADER_PACKAGE_BASEPATH%\%%j\tools\AspNet.Loader.dll)
+echo Found AspNetLoader.dll at %AspNetLoaderPath%. Copying to bin\
+copy %AspNetLoaderPath% wwwroot\bin\
 
 "C:\Program Files (x86)\IIS Express\iisexpress.exe" /config:".vs\config\applicationhost.config" /site:"fsharp-angular-web" /apppool:"Clr4IntegratedAppPool"
