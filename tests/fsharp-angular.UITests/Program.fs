@@ -6,20 +6,6 @@ let testUrl  = "http://localhost:5523/"
 let waitSecs = 3
 start firefox
 
-"simple angular controller is working" &&& fun _ ->
-
-    //go to url
-    url "http://localhost:5523/"
-
-    "#food" == "pizza"
-
-    "#sentence" == "Sriracha sauce is great with pizza!"
-
-    "#food" << "eggs"
-
-    "#sentence" == "Sriracha sauce is great with eggs!"
-
-
 "todo controller calculates remaining tasks" &&& fun _ ->
     url testUrl
     sleep waitSecs
