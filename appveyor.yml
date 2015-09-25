@@ -6,6 +6,9 @@ build_script:
 
 version: 0.0.1.{build}
 
+install:
+  - choco install firefox
+  
 test: off
 
 artifacts:
@@ -26,6 +29,3 @@ before_build:
  - ps: (New-Object Net.WebClient).DownloadFile('https://www.nuget.org/nuget.exe', 'C:\Tools\NuGet\NuGet.exe')
  - ps: nuget restore
  - cmd: set PATH=C:\Program Files (x86)\MSBuild\14.0\Bin;%PATH%
- 
-services:
-  - iis
