@@ -18,6 +18,8 @@ module Library =
   ///
   /// ## Parameters
   ///  - `num` - whatever
-  let hello num =
+  let GetNumberOfQuestions () =
     db.GetQuestions().Value.Length
 
+  let GetQuestions () =
+    db.GetQuestions().Value
