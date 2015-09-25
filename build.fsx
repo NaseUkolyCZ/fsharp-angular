@@ -82,6 +82,25 @@ let (|Fsproj|Csproj|Vbproj|) (projFileName:string) =
     | f when f.EndsWith("vbproj") -> Vbproj
     | _                           -> failwith (sprintf "Project file %s not supported. Unknown project type." projFileName)
 
+Target "GenerateGitHook" (fun _ ->
+    let targetFile = @".git\hooks\pre-push"
+
+    let content = """#!/bin/bash
+
+protected_branch='master'  
+current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+
+if [ $protected_branch = $current_branch ]  
+then  
+    ./build.cmd
+else  
+    exit 0 # push will execute
+fi  
+
+"""
+    System.IO.File.WriteAllText(targetFile, content)
+)
+
 // Generate assembly info files with the right version & up-to-date information
 Target "AssemblyInfo" (fun _ ->
     let getAssemblyInfoAttributes projectName =
@@ -363,6 +382,7 @@ Target "BuildPackage" DoNothing
 Target "All" DoNothing
 
 "Clean"
+  ==> "GenerateGitHook"
   ==> "AssemblyInfo"
   ==> "Build"
   ==> "CopyBinaries"
