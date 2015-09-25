@@ -1,5 +1,7 @@
 namespace fsharp_angular
 
+open ApiaryProvider
+
 /// Documentation for my library
 ///
 /// ## Example
@@ -8,9 +10,14 @@ namespace fsharp_angular
 ///     printfn "%d" h
 ///
 module Library = 
+  // first param: from http://docs.fsharpangular.apiary.io
+  // second param: from HOST: http://polls.apiblueprint.org/ in editor e.g. https://app.apiary.io/fsharpangular/editor
+  let db = new ApiaryProvider<"fsharpangular">("http://polls.apiblueprint.org/")
   
   /// Returns 42
   ///
   /// ## Parameters
   ///  - `num` - whatever
-  let hello num = 42
+  let hello num =
+    db.GetQuestions().Value.Length
+

@@ -1,5 +1,6 @@
 source https://nuget.org/api/v2
 
+nuget ApiaryProvider
 nuget canopy
 nuget FSharp.Formatting
 nuget FunScript
