@@ -2,9 +2,11 @@
 open runner
 open System
 
-let testUrl  = "http://localhost:5523/"
+canopy.configuration.phantomJSDir <- @"..\..\..\..\packages\PhantomJS\tools\phantomjs"
+
+let testUrl  = "http://localhost:5000/"
 let waitSecs = 3
-start firefox
+start phantomJS
 
 "todo controller calculates remaining tasks" &&& fun _ ->
     url testUrl

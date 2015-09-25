@@ -11,6 +11,7 @@ open Fake.ReleaseNotesHelper
 open Fake.UserInputHelper
 open System
 open System.IO
+open System.Diagnostics
 #if MONO
 #else
 #load "packages/SourceLink.Fake/tools/Fake.fsx"
@@ -43,8 +44,8 @@ let description = "Project has no description; update build.fsx"
 let authors = [ "David Podhola" ]
 
 // Directories
-let buildDir = @".\tests\fsharp-angular.UITests\bin\Debug\"
-let websiteDir = @".\src\fsharp-angular-web\wwwroot\"
+let webRootDir = @".\src\fsharp-angular-web\"
+let UITestsDir = @".\tests\fsharp-angular.UITests\bin\Release"
 
 // Tags for your project (for NuGet package)
 let tags = ""
@@ -147,6 +148,34 @@ Target "RunTests" (fun _ ->
             DisableShadowCopy = true
             TimeOut = TimeSpan.FromMinutes 20.
             OutputFile = "TestResults.xml" })
+)
+
+// --------------------------------------------------------------------------------------
+// Run the UI tests
+
+Target "CanopyTests" (fun _ ->
+    let hostName = "localhost"
+    let port = 5000
+
+    let info : ProcessStartInfo = ProcessStartInfo()
+    info.FileName <- Environment.ExpandEnvironmentVariables(@"%userprofile%\.dnx\runtimes\dnx-clr-win-x86.1.0.0-beta7\bin\dnx.exe")
+    info.WorkingDirectory <- webRootDir
+    info.Arguments <- "web"
+    info.UseShellExecute <- false
+
+    printfn "Starting %A in %A with %A arguments" info.FileName info.WorkingDirectory info.Arguments
+
+    let dnxProcess = Process.Start( info )
+
+    let result =
+        ExecProcess (fun info ->
+            info.FileName <- (UITestsDir @@ @"fsharp_angular.UITests.exe")
+            info.WorkingDirectory <- UITestsDir
+        ) (System.TimeSpan.FromMinutes 5.)
+
+    ProcessHelper.killProcessById dnxProcess.Id
+
+    if result <> 0 then failwith "Failed result from canopy tests"
 )
 
 #if MONO
@@ -338,6 +367,7 @@ Target "All" DoNothing
   ==> "Build"
   ==> "CopyBinaries"
   ==> "RunTests"
+  ==> "CanopyTests"
   ==> "GenerateDocs"
   ==> "All"
   =?> ("ReleaseDocs",isLocalBuild)
