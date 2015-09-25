@@ -16,16 +16,16 @@
 
     <h2>Todo</h2>
     <div ng-controller="TodoListController as todoList">
-        <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+        <span class="todo-count">{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
         [ <a href="" ng-click="todoList.archive()">archive</a> ]
         <ul class="unstyled">
-            <li ng-repeat="todo in todoList.todos">
+            <li ng-repeat="todo in todoList.todos" class="todo-item">
                 <input type="checkbox" ng-model="todo.completed">
                 <span class="done-{{todo.completed}}">{{todo.title}}</span>
             </li>
         </ul>
         <form ng-submit="todoList.addTodo()">
-            <input type="text" ng-model="todoList.todoText" size="30"
+            <input class="todo-new-title" type="text" ng-model="todoList.todoText" size="30"
                    placeholder="add new todo here">
             <input class="btn-primary" type="submit" value="add">
         </form>
