@@ -5869,7 +5869,7 @@
     "System.Linq.Queryable/4.0.1-beta-23225": {
       "type": "package",
       "serviceable": true,
-      "sha512": "4uRF87Z8b0IqoVeXN3JfduhchGB+AWAsHvxJeW6zypQfVZyyOkb/P/W+3GeqjdCvVLWy4Gt2T73syFeVrf3wVw==",
+      "sha512": "5Q3cc9vKXVya5I3Z4q6aV7PuNO6gmk8vQkrn9WJmAjXfkI5na5J1i3XykkKsozA59EJfGIQjF7biZl6zZq2xrQ==",
       "files": [
         "lib/dotnet/System.Linq.Queryable.dll",
         "lib/net45/_._",
@@ -5967,7 +5967,7 @@
     "System.ObjectModel/4.0.11-beta-23225": {
       "type": "package",
       "serviceable": true,
-      "sha512": "qVWvnLmCXnV3hUTWLbGoMo99rlGoXvmFVVNZxyXMXDDEDmg7UT2VdH2UUwbI/xSK/YUdcIFK+NQZ5zla4N25qg==",
+      "sha512": "AYAwplzPre+FgZF3utfdGU5388ixB2D13uCWuI+rU7+5MKrLdPW6siwujZMCtqrX9R3iZjWzCRQx1e9h8/RDlg==",
       "files": [
         "lib/dotnet/System.ObjectModel.dll",
         "lib/MonoAndroid10/_._",
