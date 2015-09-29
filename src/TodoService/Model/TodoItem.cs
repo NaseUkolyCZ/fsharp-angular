@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace fsharp_angular_web.Model
+namespace TodoService.Model
 {
     public class TodoItem
     {

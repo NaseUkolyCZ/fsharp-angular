@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNet.Mvc;
-using fsharp_angular_web.Model;
+using TodoService.Model;
 using Microsoft.Data.Entity;
 using System.Threading.Tasks;
 using System.Linq;
@@ -8,7 +8,7 @@ using System;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace fsharp_angular_web.Controllers
+namespace TodoService.Controllers
 {
     [Route("api/[controller]")]
     public class TodoController : Controller
