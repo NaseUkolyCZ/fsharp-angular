@@ -197,3 +197,5 @@ iisexpress-template.config
 bower_components
 page.js
 lib/
+
+setup_done.txt

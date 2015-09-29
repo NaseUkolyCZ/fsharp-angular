@@ -104,7 +104,14 @@ fi
 
 // fix ApiaryProvider by replacing the released files from the paket.dependencies downloaded 
 Target "ApiaryProviderHotfix" (fun _ ->
-    CopyDir @".\packages\ApiaryProvider\lib\net40" @".\paket-files\NaseUkolyCZ\ApiaryProvider\dist" (fun _ -> true)
+    try 
+        CopyDir @".\packages\ApiaryProvider\lib\net40" @".\paket-files\NaseUkolyCZ\ApiaryProvider\dist" (fun _ -> true)
+    with
+    | ex -> printfn "Copy ApiaryProvider failed with %A, please copy by hand" ex
+    try 
+        CopyDir @".\packages\FAKE\tools" @".\paket-files\NaseUkolyCZ\FAKE\dist" (fun _ -> true)
+    with
+    | ex -> printfn "Copy FakeLib failed with %A, please copy by hand" ex
 )
 
 // Generate assembly info files with the right version & up-to-date information
