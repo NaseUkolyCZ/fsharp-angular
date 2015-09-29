@@ -84,7 +84,7 @@ let (|Fsproj|Csproj|Vbproj|) (projFileName:string) =
 
 // protect master branch by running build.cmd without errors
 Target "GenerateGitHook" (fun _ ->
-    let targetFile = @".git\hooks\pre-push"
+    let targetFile = @".git\hooks\pre-push.old"
 
     let content = """#!/bin/bash
 
