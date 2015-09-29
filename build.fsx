@@ -93,7 +93,7 @@ current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
 
 if [ $protected_branch = $current_branch ]  
 then  
-    ./build.cmd
+    cmd ./build.cmd
 else  
     exit 0 # push will execute
 fi  

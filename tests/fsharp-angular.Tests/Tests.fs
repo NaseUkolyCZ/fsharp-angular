@@ -4,7 +4,7 @@ open fsharp_angular
 open NUnit.Framework
 
 [<Test>]
-let ``hello returns 10`` () =
+let ``hello returns 11`` () =
   let result = Library.GetNumberOfQuestions ()
   printfn "%i" result
-  Assert.AreEqual(10,result)
+  Assert.AreEqual(11,result)
