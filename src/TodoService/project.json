@@ -1,10 +1,12 @@
-﻿{
+{
   "webroot": "wwwroot",
   "version": "1.0.0-*",
 
   "dependencies": {
     "EntityFramework.InMemory": "7.0.0-beta7",
+    "Microsoft.AspNet.Cors.Core": "1.0.0-beta7",
     "Microsoft.AspNet.Mvc": "6.0.0-beta7",
+    "Microsoft.AspNet.Mvc.Cors": "6.0.0-beta7",
     "Microsoft.AspNet.Server.IIS": "1.0.0-beta7",
     "Microsoft.AspNet.Server.WebListener": "1.0.0-beta7",
     "Microsoft.AspNet.StaticFiles": "1.0.0-beta7"
@@ -15,7 +17,10 @@
   },
 
   "frameworks": {
-    "dnx451": { },
+    "dnx451": {
+      "dependencies": {
+      }
+    },
     "dnxcore50": { }
   },
 

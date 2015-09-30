@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Builder;
+using Microsoft.AspNet.Mvc;
 using Microsoft.Data.Entity;
 using Microsoft.Framework.DependencyInjection;
 using Newtonsoft.Json.Serialization;
@@ -16,6 +17,16 @@ namespace TodoService
                     options.SerializerSettings.ContractResolver =
                         new CamelCasePropertyNamesContractResolver()
                 );
+
+            services.ConfigureCors(
+                cors => cors.AddPolicy("AnyOrigin", b => b.AllowAnyOrigin())
+            );
+
+            services.Configure<MvcOptions>(
+                options => options.Filters.Add(
+                    new CorsAuthorizationFilterFactory("AnyOrigin")
+                )
+            );
 
             services
                 .AddEntityFramework()
