@@ -21,6 +21,6 @@ github NaseUkolyCZ/ApiaryProvider:new_ver dist/ApiaryProvider.xml
 github NaseUkolyCZ/ApiaryProvider:new_ver dist/FSharp.Data.DesignTime.dll
 github NaseUkolyCZ/ApiaryProvider:new_ver dist/FSharp.Data.DesignTime.xml
 
-github NaseUkolyCZ/FAKE:Fix260charsWin dist/FakeLib.dll
+github NaseUkolyCZ/FAKE dist/FakeLib.dll
 
 
