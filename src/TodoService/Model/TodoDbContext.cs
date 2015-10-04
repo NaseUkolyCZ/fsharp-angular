@@ -1,6 +1,6 @@
 ﻿using Microsoft.Data.Entity;
 
-namespace fsharp_angular_web.Model
+namespace TodoService.Model
 {
     public class TodoDbContext : DbContext
     {
