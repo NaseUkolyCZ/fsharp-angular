@@ -5,6 +5,7 @@ using Microsoft.Data.Entity;
 using System.Threading.Tasks;
 using System.Linq;
 using System;
+using Microsoft.AspNet.Cors.Core;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,6 +22,7 @@ namespace TodoService.Controllers
         }
 
         [HttpGet]
+        [EnableCors("AllowAll")]
         public async Task<IEnumerable<TodoItem>> GetAll()
         {
             if (!(await _db.Items.AnyAsync()))
@@ -35,6 +37,7 @@ namespace TodoService.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [EnableCors("AllowAll")]
         public async Task<IActionResult> GetById(Int32 id)
         {
             var item = await _db.Items.FirstOrDefaultAsync(i => i.Id == id);
@@ -48,6 +51,7 @@ namespace TodoService.Controllers
         }
 
         [HttpPost]
+        [EnableCors("AllowAll")]
         public async Task<IActionResult> Post([FromBody]TodoItem item)
         {
             if (item != null)

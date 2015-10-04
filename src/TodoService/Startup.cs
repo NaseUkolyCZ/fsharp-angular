@@ -17,14 +17,17 @@ namespace TodoService
                     options.SerializerSettings.ContractResolver =
                         new CamelCasePropertyNamesContractResolver()
                 );
-
+            
+            services.AddCors();
             services.ConfigureCors(
-                cors => cors.AddPolicy("AnyOrigin", b => b.AllowAnyOrigin())
+                cors => cors.AddPolicy("AllowAll", 
+                    b => b.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
+                )
             );
 
             services.Configure<MvcOptions>(
                 options => options.Filters.Add(
-                    new CorsAuthorizationFilterFactory("AnyOrigin")
+                    new CorsAuthorizationFilterFactory("AllowAll")
                 )
             );
 
