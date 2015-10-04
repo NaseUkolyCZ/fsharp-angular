@@ -45,6 +45,7 @@ let authors = [ "David Podhola" ]
 
 // Directories
 let webRootDir = @".\src\fsharp-angular-web\"
+let todoServiceRootDir = @".\src\TodoService\"
 let UITestsDir = @".\tests\fsharp-angular.UITests\bin\Release"
 
 // Tags for your project (for NuGet package)
@@ -189,15 +190,20 @@ Target "CanopyTests" (fun _ ->
     let hostName = "localhost"
     let port = 5000
 
-    let info : ProcessStartInfo = ProcessStartInfo()
-    info.FileName <- Environment.ExpandEnvironmentVariables(@"%userprofile%\.dnx\runtimes\dnx-clr-win-x86.1.0.0-beta7\bin\dnx.exe")
-    info.WorkingDirectory <- webRootDir
-    info.Arguments <- "web"
-    info.UseShellExecute <- false
+    let startDnx siteRootDir =
+        let info : ProcessStartInfo = ProcessStartInfo()
+        info.FileName <- Environment.ExpandEnvironmentVariables(@"%userprofile%\.dnx\runtimes\dnx-clr-win-x86.1.0.0-beta7\bin\dnx.exe")
+        info.WorkingDirectory <- siteRootDir
+        info.Arguments <- "web"
+        info.UseShellExecute <- false
 
-    printfn "Starting %A in %A with %A arguments" info.FileName info.WorkingDirectory info.Arguments
+        printfn "Starting %A in %A with %A arguments" info.FileName info.WorkingDirectory info.Arguments
 
-    let dnxProcess = Process.Start( info )
+        let dnxProcess = Process.Start( info )
+        dnxProcess
+
+    let todoServicesProcess = startDnx todoServiceRootDir    
+    let dnxProcess = startDnx webRootDir    
 
     let result =
         ExecProcess (fun info ->
@@ -206,6 +212,7 @@ Target "CanopyTests" (fun _ ->
         ) (System.TimeSpan.FromMinutes 5.)
 
     ProcessHelper.killProcessById dnxProcess.Id
+    ProcessHelper.killProcessById todoServicesProcess.Id
 
     if result <> 0 then failwith "Failed result from canopy tests"
 )
